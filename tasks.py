@@ -14,9 +14,8 @@ app.conf.update(
 
 @app.task
 def collect_links(url: str):
-    r = requests.get(url, auth=('user', 'pass'))
-    print(r.status_code)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    page = requests.get(url, auth=('user', 'pass'))
+    soup = BeautifulSoup(page.text, 'html.parser')
     base_url = 'https://zakupki.gov.ru/'
     containers_print = soup.find_all(class_="registry-entry__header")
     links_list = []
