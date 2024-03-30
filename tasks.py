@@ -29,7 +29,7 @@ def collect_links(url: str):
             absolute_url = urljoin(base_url, relative_url)
             links_list.append(absolute_url)
             collect_date_from_xml.delay(absolute_url)
-    return links_list
+
 
 
 @app.task
